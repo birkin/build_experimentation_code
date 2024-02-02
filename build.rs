@@ -15,10 +15,11 @@ fn main() {
     let version_string: String = format!("v{}", git_hash);
 
     // Write the git hash to a file that can be included in the main binary
-    let out_dir: String = env::var("OUT_DIR").unwrap();
+    let out_dir: String = env::var("OUT_DIR").expect("Failed to read OUT_DIR environment variable");
     let dest_path = Path::new(&out_dir).join("git_commit.rs");
-    let mut f = File::create(&dest_path).unwrap();
+    let mut f = File::create(&dest_path).expect("failed to create git_commit.rs file");
 
     // Write the git commit hash to the file
-    writeln!(f, "pub const GIT_COMMIT: &str = \"{}\";", version_string).unwrap();
+    writeln!(f, "pub const GIT_COMMIT: &str = \"{}\";", version_string)
+        .expect("failed to write to git_commit.rs file");
 }
