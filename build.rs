@@ -1,8 +1,8 @@
-use std::process::Command;
 use std::env;
-use std::path::Path;
 use std::fs::File;
 use std::io::Write;
+use std::path::Path;
+use std::process::Command;
 
 fn main() {
     // Get the current git commit hash
