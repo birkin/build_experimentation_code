@@ -1,10 +1,12 @@
 use clap::{Command};
 
-fn main() {
+// -- include generated git_commit.rs file
+include!(concat!(env!("OUT_DIR"), "/git_commit.rs"));
 
+fn main() {
     let app = Command::new("Version")
-    .version("`foo`") // Sets the version string that is displayed with the --version flag
-    .about("Testing outputting the git-commit via a build.rs script.");
+        .version(GIT_COMMIT) // Use the git commit hash as the version
+        .about("Testing outputting the git-commit via a build.rs script.");
 
     let _matches = app.get_matches();
 
