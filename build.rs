@@ -5,6 +5,11 @@ use std::path::Path;
 use std::process::Command;
 
 fn main() {
+    println!("cargo:rerun-if-changed=.git/HEAD");
+    println!("cargo:rerun-if-changed=.git/index");
+
+    println!("starting build.rs script...");
+
     // Get the current git commit hash
     let output = Command::new("git")
         .args(&["rev-parse", "HEAD"])
@@ -12,7 +17,7 @@ fn main() {
         .expect("Failed to execute git command");
 
     let git_hash = String::from_utf8_lossy(&output.stdout).trim().to_string();
-    let version_string: String = format!("v{}", git_hash);
+    let version_string: String = format!("`{}`", git_hash);
 
     // Write the git hash to a file that can be included in the main binary
     let out_dir: String = env::var("OUT_DIR").expect("Failed to read OUT_DIR environment variable");

@@ -7,6 +7,7 @@ use clap::Command;
 include!(concat!(env!("OUT_DIR"), "/git_commit.rs"));
 
 fn main() {
+    println!("starting main.rs script...");
     let app = Command::new("Version")
         .version(GIT_COMMIT) // Use the git commit hash as the version
         .about("This app explores outputting the git-commit (on a `--version` flag) via a build.rs script.");
