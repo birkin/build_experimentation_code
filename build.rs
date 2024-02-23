@@ -8,8 +8,6 @@ fn main() {
     println!("cargo:rerun-if-changed=.git/HEAD");
     println!("cargo:rerun-if-changed=.git/index");
 
-    println!("starting build.rs script...");
-
     // Get the current git commit hash
     let output = Command::new("git")
         .args(&["rev-parse", "HEAD"])
