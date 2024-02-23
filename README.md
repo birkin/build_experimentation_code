@@ -14,6 +14,13 @@ Thanks to ChatGPT-4 for walking me through the solution!
 
 # Usage
 
-For development: `cargo run -- --version`
+For development: 
 
-That's the equivalent of creating the binary (say, "my_app"), and then running `./my_app --version`
+```
+% cargo run -- --version 
+Version `15188e6c54cd0e790d841efca18ea0467367e9f8`
+```
+
+(well, that _was_ accurate at the time 🙂)
+
+That `cargo run -- --version` is the equivalent of creating the binary (say, "my_app"), and then running `./my_app --version`
